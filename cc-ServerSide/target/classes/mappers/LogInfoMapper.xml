@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cc.ccserverside.dao.LogInfoMapper">
+
+    <!--需要指定resultType(否则报错)-->
+    <select id="queryCities" resultType="String">
+        select distinct city from area_score_top10;
+    </select>
+
+    <select id="queryScoreByCity" resultType="LogInfo">
+        select
+            city,id,name,category,score
+        from area_score_top10
+        where city = #{city}
+    </select>
+
+</mapper>

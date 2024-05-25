@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.cc.ccserverside.dao.CtgMSInfoMapper">
+
+    <select id="queryCities" resultType="String">
+        select distinct city from area_category_month_sales_top10
+    </select>
+
+    <select id="queryCategories" resultType="String">
+        select distinct category from area_category_month_sales_top10
+    </select>
+
+    <select id="queryByCityAndCtg" resultType="LogInfo">
+        select
+            city,id,name,category,month_sales
+        from area_category_month_sales_top10
+        where city=#{param1} and category=#{param2}
+    </select>
+
+</mapper>
